@@ -8,6 +8,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.Getter;
@@ -75,5 +76,13 @@ public class Weather implements Serializable {
     @ApiModelProperty(notes = "Altitud")
     @Column(name = "altitud")
     private String altitud;
+
+    @ApiModelProperty(notes = "Nombre del pais")
+    @Column(name = "nombrePais")
+    private String nombrePais;
+
+    @ApiModelProperty(notes = "Nombre de la ciudad")
+    @Column(name = "nombreCiudad")
+    private String nombreCiudad;
 
 }

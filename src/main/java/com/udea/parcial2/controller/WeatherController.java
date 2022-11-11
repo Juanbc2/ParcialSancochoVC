@@ -60,4 +60,16 @@ public class WeatherController {
         throw new ModelNotFoundException("ID de Weather invalido");
     }
 
+    @ApiOperation(value = "Search weather by nombre de ciudad and pais")
+    @GetMapping("/search/{nombrePais}/{nombreCiudad}")
+    public Optional<Weather> findByNombreCiudadAndNombrePais(
+            @ApiParam(value = "nombre de ciudad to search weather", required = true) @PathVariable("nombreCiudad") String nombreCiudad,
+            @ApiParam(value = "pais to search weather", required = true) @PathVariable("nombrePais") String nombrePais) {
+        Optional<Weather> clima = WeatherService.findByNombreCiudadAndNombrePais(nombreCiudad, nombrePais);
+        if (!clima.isPresent()) {
+            throw new ModelNotFoundException("ID: " + nombreCiudad + " " + nombrePais);
+        }
+        return clima;
+    }
+
 }
